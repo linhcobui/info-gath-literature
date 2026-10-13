@@ -10,12 +10,21 @@ Convert arXiv papers to LLM-ready Markdown. Parses arXiv's native HTML (not PDFs
 ## In this repo
 
 Save converted papers under a topic folder named after the subject, using the
-versioned arXiv ID as the filename, e.g. `predictive-state-representations/1904.03008v1.md`.
+versioned arXiv ID as the filename, e.g. `psr-for-active-inference/1904.03008v1.md`.
 Prefer `frontmatter=true` so other agents get title/authors/date in the file:
 
 ```bash
 curl -sf "https://arxiv2md.org/api/markdown?url=1904.03008v1&frontmatter=true" -o <topic>/1904.03008v1.md
 ```
+
+The frontmatter `title`/`authors` are often wrong (affiliations parsed as authors,
+"Appendix:" prefixed to titles). Correct them from arXiv metadata (`mcp__arxiv__get_abstract`).
+Add the paper to the topic folder's `README.md` index, keeping any reviewer notes.
+
+Papers not on arXiv (conference PDFs, journal pages, blogs): convert PDFs with
+`pymupdf4llm` and HTML with `markitdown`, strip site navigation, name the file
+`<first-author>-<year>-<short-title>.md`, and prepend the same frontmatter fields
+plus `source:` describing the original.
 
 ## REST API (preferred for agents)
 
