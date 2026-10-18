@@ -4,3 +4,4 @@
   - KN: Not super familiar with test-time training, but some work argues it can be seen as a modern version of "updating beliefs" based on … (note cut off in source list)
 - `2410.23506v3.md`: The Belief State Transformer (Hu et al., 2024).
   - KN: interesting idea to also predict the past.
+- `2302.03067v2.md`: Memory-Based Meta-Learning on Non-Stationary Distributions (Genewein et al., 2023). Sequence models trained on log loss implicitly do Bayesian inference over latent switch-points and segment parameters.
